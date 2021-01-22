@@ -29,6 +29,9 @@ spec:
         - /manager
         args:
         - --leader-elect
+        - --region=us-east-1
+        - --tag=key1=value1
+        - --capability CAPABILITY_IAM
         image: controller:latest
         name: manager
         securityContext:
