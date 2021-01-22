@@ -83,10 +83,6 @@ func init() {
 	StackFlagSet.Bool("dry-run", false, "If true, don't actually do anything.")
 }
 
-// +kubebuilder:rbac:groups=cloudformation.mdstechinc.com,resources=stacks,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=cloudformation.mdstechinc.com,resources=stacks/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=cloudformation.mdstechinc.com,resources=stacks/finalizers,verbs=update
-
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
@@ -96,6 +92,11 @@ func init() {
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.7.0/pkg/reconcile
+
+// +kubebuilder:rbac:groups=cloudformation.mdstechinc.com,resources=stacks,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=cloudformation.mdstechinc.com,resources=stacks/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=cloudformation.mdstechinc.com,resources=stacks/finalizers,verbs=update
+
 func (r *StackReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := r.Log.WithValues("stack", req.NamespacedName)
 	log.Info("Reconciling Stack")
