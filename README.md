@@ -7,3 +7,6 @@
   operator-sdk create api --group=cloudformation --version=v1alpha1 --kind=Stack
 
 ```
+
+# Reference: 
+[cloudformation-operator](https://github.com/linki/cloudformation-operator)
